@@ -1,0 +1,3457 @@
+/* =================================
+   CINEMATIC MOVIE GALLERY
+================================= */
+
+.gallery-section {
+    position: relative;
+    padding: 160px 7vw;
+    background: #080808;
+    overflow: hidden;
+}
+
+/* Gallery heading */
+
+.gallery-section .section-heading {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 70px;
+}
+
+.gallery-section .section-heading p {
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 20px;
+}
+
+.gallery-section .section-heading h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(45px, 6vw, 78px);
+    font-weight: 400;
+    line-height: 1;
+    color: #fff;
+    margin: 0;
+}
+
+.gallery-section .section-heading h2 em {
+    font-style: italic;
+    opacity: 0.65;
+}
+
+
+/* Gallery grid */
+
+.gallery-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+
+/* Individual photo */
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    background: #111;
+    cursor: pointer;
+}
+
+
+/* Large cinematic photos */
+
+.gallery-item:nth-child(2),
+.gallery-item:nth-child(5),
+.gallery-item:nth-child(8) {
+    aspect-ratio: 4 / 5.5;
+}
+
+
+/* Image */
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    transition:
+        transform 0.8s cubic-bezier(0.2, 0.65, 0.3, 1),
+        filter 0.6s ease;
+}
+
+
+/* Dark cinematic overlay */
+
+.gallery-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 45%,
+            rgba(0, 0, 0, 0.75) 100%
+        );
+
+    opacity: 0.5;
+
+    transition: opacity 0.5s ease;
+
+    pointer-events: none;
+}
+
+
+/* Photo number */
+
+.gallery-item::before {
+    content: attr(data-number);
+
+    position: absolute;
+    top: 18px;
+    left: 20px;
+
+    z-index: 3;
+
+    font-size: 10px;
+    letter-spacing: 3px;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    opacity: 0;
+
+    transform: translateY(-8px);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+
+/* Hover */
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+    filter: brightness(0.8);
+}
+
+.gallery-item:hover::after {
+    opacity: 0.85;
+}
+
+.gallery-item:hover::before {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .gallery-section {
+        padding: 110px 20px;
+    }
+
+    .gallery-section .section-heading {
+        margin-bottom: 45px;
+    }
+
+    .gallery-section .section-heading h2 {
+        font-size: 48px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+    }
+
+    .gallery-item {
+        aspect-ratio: 3 / 4;
+    }
+
+}
+
+/* =================================
+   OUR STORY TIMELINE
+================================= */
+
+.timeline-section {
+    position: relative;
+    padding: 160px 7vw;
+    background: #080808;
+    overflow: hidden;
+}
+
+
+/* Heading */
+
+.timeline-heading {
+    max-width: 850px;
+    margin-bottom: 120px;
+}
+
+.timeline-heading p {
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 22px;
+}
+
+.timeline-heading h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(42px, 6vw, 76px);
+    font-weight: 400;
+    line-height: 1.05;
+    color: #fff;
+    margin: 0;
+}
+
+.timeline-heading h2 em {
+    font-style: italic;
+    opacity: 0.65;
+}
+
+
+/* Timeline */
+
+.story-timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+}
+
+
+/* Vertical line */
+
+.story-timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.14);
+    transform: translateX(-50%);
+}
+
+
+/* Timeline item */
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 0 60px 120px;
+}
+
+
+/* Alternate sides */
+
+.timeline-item:nth-child(odd) {
+    margin-left: 0;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    margin-left: 50%;
+    text-align: left;
+}
+
+
+/* Number */
+
+.timeline-number {
+    position: absolute;
+    top: 0;
+
+    width: 48px;
+    height: 48px;
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #080808;
+
+    font-size: 11px;
+    letter-spacing: 1px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    z-index: 2;
+
+    transition: all 0.4s ease;
+}
+
+
+/* Number position */
+
+.timeline-item:nth-child(odd) .timeline-number {
+    right: -24px;
+}
+
+.timeline-item:nth-child(even) .timeline-number {
+    left: -24px;
+}
+
+
+/* Content */
+
+.timeline-content span {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.timeline-content h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 42px;
+    font-weight: 400;
+    color: #fff;
+    margin: 12px 0 15px;
+
+    transition: transform 0.4s ease;
+}
+
+.timeline-content p {
+    max-width: 430px;
+
+    font-size: 14px;
+    line-height: 1.8;
+
+    color: rgba(255, 255, 255, 0.48);
+}
+
+
+/* Hover */
+
+.timeline-item:hover .timeline-number {
+    background: #fff;
+    color: #080808;
+    border-color: #fff;
+
+    transform: scale(1.08);
+}
+
+.timeline-item:hover .timeline-content h3 {
+    transform: translateY(-4px);
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .timeline-section {
+        padding: 110px 25px;
+    }
+
+    .timeline-heading {
+        margin-bottom: 80px;
+    }
+
+    .timeline-heading h2 {
+        font-size: 48px;
+    }
+
+    .story-timeline::before {
+        left: 24px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+        width: 100%;
+        margin-left: 0;
+        padding: 0 0 80px 70px;
+        text-align: left;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-number,
+    .timeline-item:nth-child(even) .timeline-number {
+        left: 0;
+        right: auto;
+    }
+
+    .timeline-content h3 {
+        font-size: 36px;
+    }
+
+    .timeline-content p {
+        font-size: 14px;
+    }
+}
+
+
+/* =================================
+   CINEMATIC OUR SONG SECTION
+================================= */
+
+.song-section {
+    position: relative;
+    padding: 150px 7vw;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 255, 255, 0.055) 0%,
+            rgba(8, 8, 8, 0.9) 45%,
+            #080808 75%
+        );
+    overflow: hidden;
+}
+
+/* Soft cinematic light */
+.song-section::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.025);
+    filter: blur(100px);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* Section heading */
+.song-section .section-heading {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.song-section .section-heading p {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 20px;
+}
+
+.song-section .section-heading h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(42px, 6vw, 76px);
+    font-weight: 400;
+    line-height: 1;
+    color: #ffffff;
+    margin: 0;
+}
+
+.song-section .section-heading h2 em {
+    font-style: italic;
+    opacity: 0.7;
+}
+
+/* Spotify player */
+.spotify-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 850px;
+    margin: 55px auto 0;
+    border-radius: 18px;
+    overflow: hidden;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.75),
+        0 0 60px rgba(255, 255, 255, 0.035);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+/* Subtle hover */
+.spotify-container:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 40px 90px rgba(0, 0, 0, 0.85),
+        0 0 70px rgba(255, 255, 255, 0.06);
+}
+
+.spotify-container iframe {
+    display: block;
+    width: 100%;
+    height: 152px;
+    border: none;
+}
+
+/* Small cinematic quote */
+.spotify-container::after {
+    content: "Some songs are more than just songs. They hold little pieces of the moments we never want to forget. And somehow, this one always feels a little like us.";
+    display: block;
+    text-align: center;
+    padding: 22px 35px;
+    background: #0c0c0c;
+    color: rgba(255, 255, 255, 0.45);
+    font-family: "Cormorant Garamond", serif;
+    font-size: 19px;
+    line-height: 1.6;
+    font-style: italic;
+    letter-spacing: 0.3px;
+}
+/* Mobile */
+@media (max-width: 800px) {
+
+    .song-section {
+        padding: 110px 25px;
+    }
+
+    .song-section .section-heading h2 {
+        font-size: 48px;
+    }
+
+    .spotify-container {
+        margin-top: 40px;
+        border-radius: 14px;
+    }
+
+    .spotify-container iframe {
+        height: 152px;
+    }
+
+    .spotify-container::after {
+        font-size: 16px;
+    }
+}
+
+/* =================================
+   OUR SONG - SPOTIFY
+================================= */
+
+.song-section {
+    padding: 150px 7vw;
+    background: #080808;
+    position: relative;
+}
+
+.spotify-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 50px auto 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
+}
+
+.spotify-container iframe {
+    display: block;
+    width: 100%;
+    border: none;
+}
+
+@media (max-width: 800px) {
+
+    .song-section {
+        padding: 100px 25px;
+    }
+
+    .spotify-container {
+        margin-top: 35px;
+        border-radius: 12px;
+    }
+
+}
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .video-section {
+        padding: 100px 25px;
+    }
+
+    .story-video {
+        max-height: 65vh;
+    }
+
+    .video-caption {
+        font-size: 9px;
+
+        line-height: 1.8;
+
+        letter-spacing: 2px;
+    }
+}
+
+/* =================================
+   NETFLIX MOVIE CREDITS FOOTER
+================================= */
+
+footer {
+    position: relative;
+
+    min-height: 120px;
+
+    padding: 45px 7vw;
+
+    background: #050505;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+    color: #555;
+
+    transition:
+        color 0.4s ease,
+        border-color 0.4s ease;
+}
+
+
+/* Tiny cinematic line */
+
+footer::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 40px;
+    height: 1px;
+
+    background: rgba(255, 255, 255, 0.25);
+
+    transform: translateX(-50%);
+}
+
+
+/* Footer text */
+
+footer span,
+footer p {
+    transition:
+        color 0.4s ease,
+        letter-spacing 0.4s ease;
+}
+
+footer:hover span,
+footer:hover p {
+    color: #888;
+
+    letter-spacing: 3.5px;
+}
+
+
+/* Very subtle ending glow */
+
+footer::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    width: 300px;
+    height: 80px;
+
+    transform: translateX(-50%);
+
+    background: rgba(255, 255, 255, 0.015);
+
+    filter: blur(40px);
+
+    pointer-events: none;
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    footer {
+        min-height: 140px;
+
+        padding: 40px 25px;
+    }
+}
+
+/* =================================
+   NETFLIX MEMORY CARD ACTION
+================================= */
+
+.memory-card {
+    position: relative;
+}
+
+/* View Memory label */
+
+.memory-card::after {
+    content: "VIEW MEMORY  →";
+
+    position: absolute;
+
+    left: 30px;
+    bottom: 22px;
+
+    z-index: 10;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    opacity: 0;
+
+    transform: translateY(10px);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+
+/* Show on hover */
+
+.memory-card:hover::after {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* Move existing content slightly upward */
+
+.memory-card:hover .memory-content {
+    transform: translateY(-28px);
+}
+
+
+/* Keep text transition smooth */
+
+.memory-content {
+    transition:
+        transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .memory-card::after {
+        opacity: 0.75;
+
+        transform: translateY(0);
+
+        bottom: 18px;
+
+        left: 25px;
+    }
+
+    .memory-card:hover .memory-content {
+        transform: translateY(-20px);
+    }
+}
+
+
+/* =================================
+   CINEMATIC HERO → EPISODES TRANSITION
+================================= */
+
+.hero {
+    position: relative;
+}
+
+
+/* Fade at the bottom of Hero */
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 220px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            #080808
+        );
+
+    z-index: 3;
+}
+
+
+/* Keep hero content above transition */
+
+.hero-content {
+    z-index: 5;
+}
+
+.hero-image {
+    z-index: 1;
+}
+
+
+/* Memories section starts like a new episode */
+
+.episodes {
+    position: relative;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #080808 0%,
+            #080808 85%,
+            #0a0a0a 100%
+        );
+}
+
+
+/* Small cinematic divider */
+
+.episodes::before {
+    content: "";
+
+    display: block;
+
+    width: 45px;
+    height: 1px;
+
+    margin-bottom: 55px;
+
+    background: rgba(255, 255, 255, 0.35);
+}
+
+
+/* Episode heading polish */
+
+.episodes .section-heading p {
+    transition:
+        letter-spacing 0.5s ease,
+        color 0.5s ease;
+}
+
+.episodes .section-heading:hover p {
+    letter-spacing: 7px;
+
+    color: #aaa;
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .hero::after {
+        height: 140px;
+    }
+
+    .episodes::before {
+        margin-bottom: 40px;
+    }
+}
+
+
+/* =================================
+   TRUE SCROLL CINEMATIC REVEAL
+================================= */
+
+.cinematic-hidden {
+    opacity: 0;
+
+    transform:
+        translateY(45px)
+        scale(0.98);
+
+    filter: blur(4px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s cubic-bezier(0.2, 0.7, 0.2, 1),
+        filter 1s ease;
+}
+
+.cinematic-visible {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    filter: blur(0);
+}
+
+
+/* Stagger memory cards */
+
+.episode-card.cinematic-visible:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.episode-card.cinematic-visible:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.episode-card.cinematic-visible:nth-child(4) {
+    transition-delay: 0.3s;
+}
+
+.episode-card.cinematic-visible:nth-child(5) {
+    transition-delay: 0.4s;
+}
+
+.episode-card.cinematic-visible:nth-child(6) {
+    transition-delay: 0.5s;
+}
+
+.episode-card.cinematic-visible:nth-child(7) {
+    transition-delay: 0.6s;
+}
+
+
+/* Gallery stagger */
+
+.gallery-item.cinematic-visible:nth-child(2) {
+    transition-delay: 0.08s;
+}
+
+.gallery-item.cinematic-visible:nth-child(3) {
+    transition-delay: 0.16s;
+}
+
+.gallery-item.cinematic-visible:nth-child(4) {
+    transition-delay: 0.24s;
+}
+
+.gallery-item.cinematic-visible:nth-child(5) {
+    transition-delay: 0.32s;
+}
+
+.gallery-item.cinematic-visible:nth-child(6) {
+    transition-delay: 0.40s;
+}
+
+.gallery-item.cinematic-visible:nth-child(7) {
+    transition-delay: 0.48s;
+}
+
+.gallery-item.cinematic-visible:nth-child(8) {
+    transition-delay: 0.56s;
+}
+
+.gallery-item.cinematic-visible:nth-child(9) {
+    transition-delay: 0.64s;
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .cinematic-hidden {
+        transform:
+            translateY(25px)
+            scale(0.99);
+
+        filter: blur(2px);
+    }
+}
+
+/* =================================
+   CINEMATIC SCROLL REVEAL
+================================= */
+
+/* Section headings */
+
+.section-heading {
+    animation: cinematicReveal 1s ease both;
+}
+
+
+/* Memory cards */
+
+.episode-card {
+    animation: cinematicReveal 0.9s ease both;
+}
+
+.episode-card:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.episode-card:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.episode-card:nth-child(3) {
+    animation-delay: 0.25s;
+}
+
+.episode-card:nth-child(4) {
+    animation-delay: 0.35s;
+}
+
+.episode-card:nth-child(5) {
+    animation-delay: 0.45s;
+}
+
+.episode-card:nth-child(6) {
+    animation-delay: 0.55s;
+}
+
+.episode-card:nth-child(7) {
+    animation-delay: 0.65s;
+}
+
+
+/* Gallery items */
+
+.gallery-item {
+    animation: cinematicReveal 0.9s ease both;
+}
+
+.gallery-item:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.gallery-item:nth-child(2) {
+    animation-delay: 0.12s;
+}
+
+.gallery-item:nth-child(3) {
+    animation-delay: 0.19s;
+}
+
+.gallery-item:nth-child(4) {
+    animation-delay: 0.26s;
+}
+
+.gallery-item:nth-child(5) {
+    animation-delay: 0.33s;
+}
+
+.gallery-item:nth-child(6) {
+    animation-delay: 0.40s;
+}
+
+.gallery-item:nth-child(7) {
+    animation-delay: 0.47s;
+}
+
+.gallery-item:nth-child(8) {
+    animation-delay: 0.54s;
+}
+
+.gallery-item:nth-child(9) {
+    animation-delay: 0.61s;
+}
+
+
+/* Reveal animation */
+
+@keyframes cinematicReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(0.98);
+
+        filter: blur(3px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter: blur(0);
+    }
+}
+
+
+/* Respect reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* =================================
+   NETFLIX CINEMATIC NAVBAR
+================================= */
+
+.navbar {
+    height: 75px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.85),
+            rgba(0, 0, 0, 0.25),
+            transparent
+        );
+
+    transition:
+        background 0.4s ease,
+        height 0.4s ease;
+}
+
+
+/* Logo */
+
+.logo {
+    font-size: 12px;
+
+    letter-spacing: 5px;
+
+    transition:
+        letter-spacing 0.4s ease,
+        opacity 0.4s ease;
+}
+
+.logo:hover {
+    letter-spacing: 6px;
+
+    opacity: 0.8;
+}
+
+
+/* Navigation links */
+
+.navbar nav a {
+    position: relative;
+
+    color: #aaa;
+
+    transition:
+        color 0.3s ease,
+        letter-spacing 0.3s ease;
+}
+
+.navbar nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -9px;
+
+    width: 0;
+    height: 1px;
+
+    background: #fff;
+
+    transform: translateX(-50%);
+
+    transition: width 0.3s ease;
+}
+
+.navbar nav a:hover {
+    color: #fff;
+
+    letter-spacing: 2.5px;
+}
+
+.navbar nav a:hover::after {
+    width: 100%;
+}
+
+
+/* Menu button */
+
+.menu-btn {
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.menu-btn:hover {
+    transform: scale(1.1);
+
+    opacity: 0.75;
+}
+
+
+/* Mobile navbar */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        height: 70px;
+
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.9),
+                transparent
+            );
+    }
+
+    .navbar nav {
+        backdrop-filter: blur(15px);
+
+        box-shadow:
+            0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+}
+
+
+/* =================================
+   NETFLIX FINAL SCENE
+================================= */
+
+.letter-section {
+    min-height: 100vh;
+
+    position: relative;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(255, 255, 255, 0.035),
+            transparent 55%
+        );
+
+    overflow: hidden;
+}
+
+
+/* Cinematic light */
+
+.letter-section::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: rgba(255, 255, 255, 0.025);
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    pointer-events: none;
+}
+
+
+/* Keep content above background */
+
+.letter-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Small intro text */
+
+.letter-section .small-text {
+    letter-spacing: 7px;
+
+    color: #888;
+
+    margin-bottom: 30px;
+}
+
+
+/* Main title */
+
+.letter-section h2 {
+    font-size: clamp(65px, 9vw, 125px);
+
+    letter-spacing: -4px;
+
+    text-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.5);
+
+    margin-bottom: 55px;
+}
+
+
+/* Letter */
+
+.letter-text {
+    color: #999;
+
+    font-size: 14px;
+
+    line-height: 2.2;
+
+    max-width: 550px;
+}
+
+
+/* Heart */
+
+.letter-section .heart {
+    font-size: 48px;
+
+    margin: 50px 0 30px;
+
+    animation:
+        heartbeat 2.5s ease-in-out infinite,
+        heartGlow 3s ease-in-out infinite;
+}
+
+@keyframes heartGlow {
+
+    0%,
+    100% {
+        text-shadow:
+            0 0 0 rgba(255, 255, 255, 0);
+    }
+
+    50% {
+        text-shadow:
+            0 0 25px rgba(255, 255, 255, 0.25);
+    }
+}
+
+
+/* Ending line */
+
+.letter-section .ending {
+    letter-spacing: 6px;
+
+    color: #666;
+
+    transition:
+        color 0.5s ease,
+        letter-spacing 0.5s ease;
+}
+
+.letter-section:hover .ending {
+    color: #aaa;
+
+    letter-spacing: 7px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .letter-section {
+        min-height: 90vh;
+
+        padding: 120px 25px;
+    }
+
+    .letter-section h2 {
+        font-size: 58px;
+
+        letter-spacing: -2px;
+    }
+
+    .letter-text {
+        font-size: 13px;
+
+        line-height: 2;
+    }
+}
+
+
+/* =================================
+   NETFLIX FULLSCREEN GALLERY
+================================= */
+
+.gallery-lightbox {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(30, 30, 30, 0.35),
+            rgba(0, 0, 0, 0.98) 75%
+        );
+
+    backdrop-filter: blur(18px);
+
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+}
+
+
+/* Image container */
+
+.gallery-lightbox-image {
+    position: relative;
+
+    width: min(88vw, 1200px);
+    height: min(86vh, 780px);
+
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Main image */
+
+.gallery-lightbox-image img {
+    max-width: 100%;
+    max-height: 100%;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.8);
+
+    transform: scale(0.94);
+
+    transition:
+        transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
+        opacity 0.4s ease;
+}
+
+.gallery-lightbox.active
+.gallery-lightbox-image img {
+    transform: scale(1);
+}
+
+
+/* Close button */
+
+.gallery-close {
+    top: 28px;
+    right: 30px;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    font-size: 27px;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.4s ease;
+}
+
+.gallery-close:hover {
+    background: #fff;
+
+    color: #000;
+
+    transform: rotate(90deg);
+}
+
+
+/* Previous / Next */
+
+.gallery-prev,
+.gallery-next {
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    font-size: 36px;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.gallery-prev:hover,
+.gallery-next:hover {
+    background: #fff;
+
+    color: #000;
+}
+
+.gallery-prev:hover {
+    transform: translateY(-50%) translateX(-4px);
+}
+
+.gallery-next:hover {
+    transform: translateY(-50%) translateX(4px);
+}
+
+
+/* Counter */
+
+.gallery-counter {
+    bottom: 28px;
+
+    padding: 8px 16px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    background: rgba(0, 0, 0, 0.45);
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+
+    color: #aaa;
+
+    backdrop-filter: blur(8px);
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .gallery-lightbox-image {
+        width: 94vw;
+        height: 78vh;
+
+        padding: 10px;
+    }
+
+    .gallery-lightbox-image img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .gallery-close {
+        top: 15px;
+        right: 15px;
+
+        width: 42px;
+        height: 42px;
+
+        font-size: 23px;
+    }
+
+    .gallery-prev,
+    .gallery-next {
+        width: 42px;
+        height: 42px;
+
+        font-size: 27px;
+    }
+
+    .gallery-prev {
+        left: 10px;
+    }
+
+    .gallery-next {
+        right: 10px;
+    }
+
+    .gallery-counter {
+        bottom: 18px;
+    }
+}
+
+
+/* =================================
+    NETFLIX MOVIE STILL GALLERY
+ ================================= */
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+
+    background: #080808;
+
+    border: 1px solid rgba(255, 255, 255, 0.06);
+
+    transition:
+        transform 0.6s ease,
+        border-color 0.6s ease,
+        box-shadow 0.6s ease;
+}
+
+
+/* Cinematic dark overlay */
+
+.gallery-item::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.45),
+            transparent 45%
+        );
+
+    opacity: 0;
+
+    transition: opacity 0.5s ease;
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+
+/* Image */
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 1s cubic-bezier(0.2, 0.7, 0.2, 1),
+        filter 0.8s ease;
+}
+
+
+/* Hover */
+
+.gallery-item:hover {
+    transform: scale(1.015);
+
+    border-color: rgba(255, 255, 255, 0.22);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.55);
+
+    z-index: 2;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+
+    filter: brightness(0.72);
+}
+
+
+/* Subtle number */
+
+.gallery-item::before {
+    position: absolute;
+
+    top: 15px;
+    left: 18px;
+
+    z-index: 3;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 22px;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    opacity: 0;
+
+    transform: translateY(-8px);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+}
+
+.gallery-item:hover::before {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* Gallery numbering */
+
+.gallery-item:nth-child(1)::before {
+    content: "01";
+}
+
+.gallery-item:nth-child(2)::before {
+    content: "02";
+}
+
+.gallery-item:nth-child(3)::before {
+    content: "03";
+}
+
+.gallery-item:nth-child(4)::before {
+    content: "04";
+}
+
+.gallery-item:nth-child(5)::before {
+    content: "05";
+}
+
+.gallery-item:nth-child(6)::before {
+    content: "06";
+}
+
+.gallery-item:nth-child(7)::before {
+    content: "07";
+}
+
+.gallery-item:nth-child(8)::before {
+    content: "08";
+}
+
+.gallery-item:nth-child(9)::before {
+    content: "09";
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .gallery-item:hover {
+        transform: scale(1.01);
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.04);
+    }
+}
+
+
+/* =================================
+    NETFLIX EPISODE STYLE
+ ================================= */
+
+.episode-card {
+    position: relative;
+    overflow: hidden;
+
+    background: #0b0b0b;
+
+    transition:
+        transform 0.5s ease,
+        border-color 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+/* Episode number */
+
+.episode-card::before {
+    content: "EPISODE";
+
+    position: absolute;
+
+    top: 22px;
+    left: 25px;
+
+    z-index: 5;
+
+    font-size: 8px;
+    letter-spacing: 4px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    transition:
+        color 0.4s ease,
+        transform 0.4s ease;
+}
+
+
+/* Large episode number */
+
+.episode-card::after {
+    content: "";
+
+    position: absolute;
+
+    top: 34px;
+    left: 22px;
+
+    z-index: 4;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 52px;
+
+    line-height: 1;
+
+    color: rgba(255, 255, 255, 0.12);
+
+    pointer-events: none;
+
+    transition:
+        color 0.4s ease,
+        transform 0.4s ease;
+}
+
+
+/* Individual episode numbers */
+
+.episode-card:nth-child(1)::after {
+    content: "01";
+}
+
+.episode-card:nth-child(2)::after {
+    content: "02";
+}
+
+.episode-card:nth-child(3)::after {
+    content: "03";
+}
+
+.episode-card:nth-child(4)::after {
+    content: "04";
+}
+
+.episode-card:nth-child(5)::after {
+    content: "05";
+}
+
+.episode-card:nth-child(6)::after {
+    content: "06";
+}
+
+.episode-card:nth-child(7)::after {
+    content: "07";
+}
+
+
+/* Hover */
+
+.episode-card:hover {
+    transform: translateY(-14px) scale(1.02);
+
+    border-color: rgba(255, 255, 255, 0.3);
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.55);
+}
+
+.episode-card:hover::before {
+    color: rgba(255, 255, 255, 0.9);
+
+    transform: translateY(-3px);
+}
+
+.episode-card:hover::after {
+    color: rgba(255, 255, 255, 0.22);
+
+    transform: translateY(-3px);
+}
+
+
+/* Image cinematic zoom */
+
+.episode-card:hover .memory-card > img,
+.memory-card:hover > img {
+    transform: scale(1.1);
+
+    filter: brightness(0.65);
+}
+
+
+/* Stronger bottom cinematic gradient */
+
+.memory-overlay {
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.95),
+            rgba(0, 0, 0, 0.2) 65%,
+            transparent
+        );
+}
+
+
+/* Text movement */
+
+.memory-content {
+    transition: transform 0.5s ease;
+}
+
+.episode-card:hover .memory-content {
+    transform: translateY(-6px);
+}
+
+.memory-content h3 {
+    transition:
+        letter-spacing 0.4s ease,
+        color 0.4s ease;
+}
+
+.episode-card:hover .memory-content h3 {
+    letter-spacing: 0.5px;
+    color: #fff;
+}
+
+
+/* Small cinematic line */
+
+.memory-content::before {
+    content: "";
+
+    width: 35px;
+    height: 1px;
+
+    background: rgba(255, 255, 255, 0.5);
+
+    margin-bottom: 18px;
+
+    transition:
+        width 0.4s ease,
+        background 0.4s ease;
+}
+
+.episode-card:hover .memory-content::before {
+    width: 65px;
+
+    background: rgba(255, 255, 255, 0.9);
+}
+
+
+/* Mobile */
+
+@media (max-width: 800px) {
+
+    .episode-card::after {
+        font-size: 45px;
+    }
+
+    .episode-card:hover {
+        transform: translateY(-8px) scale(1.01);
+    }
+}
+
+
+/* =================================
+   NETFLIX CINEMATIC POLISH
+================================= */
+
+/* Cinematic page entrance */
+body {
+    animation: pageFadeIn 1.2s ease forwards;
+}
+
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* HERO CINEMATIC INTRO */
+
+.hero-content .small-text {
+    animation: heroTextIn 1s ease 0.3s both;
+}
+
+.hero h1 {
+    animation: heroTextIn 1.2s ease 0.5s both;
+}
+
+.hero-description {
+    animation: heroTextIn 1s ease 0.8s both;
+}
+
+.watch-btn {
+    animation: heroTextIn 1s ease 1s both;
+}
+
+@keyframes heroTextIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* HERO IMAGE CINEMATIC ZOOM */
+
+.hero-image img {
+    animation: cinematicZoom 12s ease-out forwards;
+}
+
+@keyframes cinematicZoom {
+    from {
+        transform: scale(1.08);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+
+/* DARK NETFLIX-STYLE IMAGE GRADIENT */
+
+.hero-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to right,
+            rgba(8, 8, 8, 0.75),
+            transparent 35%
+        ),
+        linear-gradient(
+            to top,
+            rgba(8, 8, 8, 0.75),
+            transparent 45%
+        );
+}
+
+
+/* HERO CONTENT ABOVE OVERLAY */
+
+.hero-image .image-caption {
+    z-index: 2;
+}
+
+
+/* CINEMATIC BUTTON */
+
+.watch-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.watch-btn::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    transition: left 0.5s ease;
+}
+
+.watch-btn:hover::before {
+    left: 100%;
+}
+
+
+/* SECTION HEADINGS */
+
+.section-heading {
+    transition: transform 0.6s ease;
+}
+
+.section-heading:hover {
+    transform: translateX(5px);
+}
+
+
+/* EPISODE CARDS — CINEMATIC HOVER */
+
+.episode-card {
+    transition:
+        transform 0.5s ease,
+        border-color 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+.episode-card:hover {
+    transform: translateY(-12px) scale(1.015);
+
+    border-color: rgba(255, 255, 255, 0.28);
+
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.45);
+}
+
+
+/* GALLERY CINEMATIC HOVER */
+
+.gallery-item {
+    transition:
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.015);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+
+/* LETTER — MOVIE ENDING FEEL */
+
+.letter-section {
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 255, 255, 0.025),
+            transparent 55%
+        );
+}
+
+
+/* SUBTLE FILM GRAIN */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    opacity: 0.025;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+
+    mix-blend-mode: overlay;
+}
+
+
+/* =================================
+   RESET
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080808;
+    color: #f5f2ed;
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* =================================
+   NAVBAR
+================================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 80px;
+
+    padding: 0 6vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    z-index: 1000;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.65),
+        transparent
+    );
+}
+
+.logo {
+    font-size: 13px;
+    letter-spacing: 4px;
+}
+
+.logo span {
+    color: #aaa;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 35px;
+}
+
+.navbar nav a {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #bdb9b3;
+
+    transition: color 0.3s ease;
+}
+
+.navbar nav a:hover {
+    color: #fff;
+}
+
+.menu-btn {
+    display: none;
+
+    border: none;
+    background: none;
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+
+/* =================================
+   HERO
+================================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 45% 55%;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 100px 8vw 70px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.small-text {
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: #9b968f;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(60px, 7vw, 105px);
+
+    font-weight: 400;
+
+    line-height: 0.9;
+
+    letter-spacing: -3px;
+
+    margin-bottom: 35px;
+}
+
+.hero h1 em {
+    font-style: italic;
+    color: #aaa39a;
+}
+
+.hero-description {
+    max-width: 390px;
+
+    color: #88837d;
+
+    font-size: 13px;
+
+    line-height: 1.9;
+
+    margin-bottom: 35px;
+}
+
+.watch-btn {
+    width: fit-content;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+
+    padding: 14px 22px;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    transition: 0.3s ease;
+}
+
+.watch-btn span {
+    font-size: 17px;
+}
+
+.watch-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+
+/* =================================
+   HERO IMAGE
+================================= */
+
+.hero-image {
+    position: relative;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+
+    min-height: 100vh;
+
+    object-fit: cover;
+
+    transform: scale(1.03);
+
+    transition: transform 0.4s ease;
+}
+
+.image-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to right,
+            #080808 0%,
+            transparent 25%
+        ),
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.55),
+            transparent 45%
+        );
+}
+
+.image-caption {
+    position: absolute;
+
+    bottom: 45px;
+    left: 45px;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.image-caption span {
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: #aaa;
+}
+
+.image-caption p {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+
+/* =================================
+   SECTIONS
+================================= */
+
+.episodes,
+.gallery-section {
+    padding: 150px 7vw;
+}
+
+.section-heading {
+    margin-bottom: 65px;
+}
+
+.section-heading p {
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: #777;
+
+    margin-bottom: 20px;
+}
+
+.section-heading h2 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(48px, 6vw, 82px);
+
+    font-weight: 400;
+
+    line-height: 0.95;
+
+    letter-spacing: -2px;
+}
+
+.section-heading h2 em {
+    font-style: italic;
+
+    color: #aaa39a;
+}
+
+
+/* =================================
+   MEMORY CARDS
+================================= */
+
+.episode-container {
+    display: flex;
+
+    gap: 18px;
+
+    overflow-x: auto;
+
+    padding-bottom: 25px;
+
+    scrollbar-width: none;
+}
+
+.episode-container::-webkit-scrollbar {
+    display: none;
+}
+
+.episode-card {
+    min-width: 280px;
+
+    height: 360px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    background: #111;
+
+    flex-shrink: 0;
+
+    transition:
+        transform 0.5s ease,
+        border-color 0.5s ease;
+}
+
+.episode-card:hover {
+    transform: translateY(-12px);
+
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.memory-card {
+    cursor: pointer;
+}
+
+.memory-card > img {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.8s ease,
+        filter 0.8s ease;
+}
+
+.memory-card:hover > img {
+    transform: scale(1.08);
+
+    filter: brightness(0.72);
+}
+
+.memory-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.9),
+            rgba(0, 0, 0, 0.05) 70%
+        );
+}
+
+.memory-content {
+    position: absolute;
+
+    inset: 0;
+
+    padding: 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    z-index: 2;
+}
+
+.memory-content span {
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: #aaa;
+
+    margin-bottom: 12px;
+}
+
+.memory-content h3 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 32px;
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    margin-bottom: 12px;
+}
+
+.memory-content p {
+    font-size: 11px;
+
+    line-height: 1.7;
+
+    color: #aaa;
+
+    max-width: 220px;
+}
+
+
+/* =================================
+   GALLERY
+================================= */
+
+.gallery-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    grid-auto-rows: 280px;
+
+    gap: 12px;
+}
+
+.gallery-item {
+    position: relative;
+
+    overflow: hidden;
+
+    background: #111;
+
+    cursor: pointer;
+}
+
+.gallery-item.large {
+    grid-row: span 2;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.8s ease,
+        filter 0.8s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.06);
+
+    filter: brightness(0.75);
+}
+
+
+/* =================================
+   LETTER
+================================= */
+
+.letter-section {
+    min-height: 90vh;
+
+    padding: 170px 10vw;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+/*
+   IMPORTANT:
+   Letter content is kept visible.
+   No opacity: 0 here.
+*/
+
+.letter-section .small-text,
+.letter-section h2,
+.letter-section .letter-text,
+.letter-section .heart,
+.letter-section .ending {
+    opacity: 1;
+    visibility: visible;
+}
+
+.letter-section h2 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(60px, 8vw, 110px);
+
+    font-weight: 400;
+
+    line-height: 0.85;
+
+    letter-spacing: -3px;
+
+    margin-bottom: 50px;
+}
+
+.letter-section h2 em {
+    font-style: italic;
+
+    color: #aaa39a;
+}
+
+.letter-text {
+    max-width: 520px;
+
+    color: #888;
+
+    font-size: 13px;
+
+    line-height: 2.1;
+
+    white-space: pre-line;
+}
+
+.heart {
+    font-size: 45px;
+
+    margin: 45px 0 25px;
+
+    color: #f5f2ed;
+
+    /*
+       IMPORTANT:
+       Heart animation controls transform.
+       Do not add transform:none here.
+    */
+
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+.ending {
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    color: #777;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+
+/* =================================
+   FOOTER
+================================= */
+
+footer {
+    padding: 30px 7vw;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #666;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
+
+/* =================================
+   SCROLL REVEAL
+================================= */
+
+.hidden {
+    opacity: 0;
+
+    transform: translateY(35px);
+
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s ease;
+}
+
+.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+.episode-card:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.episode-card:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.episode-card:nth-child(4) {
+    transition-delay: 0.3s;
+}
+
+.episode-card:nth-child(5) {
+    transition-delay: 0.4s;
+}
+
+
+/* =================================
+   MEMORY POPUP
+================================= */
+
+.memory-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 5000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background: rgba(0, 0, 0, 0.9);
+
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+}
+
+.memory-modal.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+.memory-modal-content {
+    position: relative;
+
+    width: min(1000px, 92vw);
+
+    max-height: 90vh;
+
+    display: grid;
+
+    grid-template-columns: 1.15fr 0.85fr;
+
+    background: #0d0d0d;
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    overflow: hidden;
+
+    transform: translateY(25px) scale(0.97);
+
+    transition: transform 0.5s ease;
+}
+
+.memory-modal.active .memory-modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.memory-modal-image {
+    min-height: 600px;
+
+    background: #050505;
+}
+
+.memory-modal-image img {
+    width: 100%;
+    height: 100%;
+
+    min-height: 600px;
+
+    object-fit: cover;
+}
+
+.memory-modal-text {
+    padding: 60px 45px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+}
+
+.memory-modal-text > span {
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: #aaa;
+
+    margin-bottom: 20px;
+}
+
+.memory-modal-text h2 {
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(45px, 5vw, 75px);
+
+    font-weight: 400;
+
+    line-height: 0.9;
+
+    margin-bottom: 25px;
+}
+
+.memory-modal-text p {
+    color: #999;
+
+    font-size: 13px;
+
+    line-height: 2;
+}
+
+.memory-close {
+    position: fixed;
+
+    top: 20px;
+    right: 25px;
+
+    width: 45px;
+    height: 45px;
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    background: rgba(0, 0, 0, 0.5);
+
+    color: white;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    transition: 0.3s ease;
+}
+
+.memory-close:hover {
+    background: white;
+
+    color: black;
+}
+
+
+/* =================================
+   GALLERY LIGHTBOX
+================================= */
+
+.gallery-lightbox {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.96);
+
+    backdrop-filter: blur(15px);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 7000;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+}
+
+.gallery-lightbox.active {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+.gallery-lightbox-image {
+    width: min(85vw, 1100px);
+
+    height: min(85vh, 750px);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-lightbox-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    transform: scale(0.94);
+
+    transition: transform 0.45s ease;
+}
+
+.gallery-lightbox.active
+.gallery-lightbox-image img {
+    transform: scale(1);
+}
+
+.gallery-close {
+    position: fixed;
+
+    top: 25px;
+    right: 30px;
+
+    width: 48px;
+    height: 48px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    color: white;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    transition: 0.3s ease;
+}
+
+.gallery-close:hover {
+    background: white;
+
+    color: black;
+
+    transform: rotate(90deg);
+}
+
+.gallery-prev,
+.gallery-next {
+    position: fixed;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 55px;
+    height: 55px;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    background: rgba(0, 0, 0, 0.35);
+
+    color: white;
+
+    font-size: 42px;
+
+    font-family: Arial, sans-serif;
+
+    font-weight: 200;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    transition: 0.3s ease;
+}
+
+.gallery-prev {
+    left: 30px;
+}
+
+.gallery-next {
+    right: 30px;
+}
+
+.gallery-prev:hover,
+.gallery-next:hover {
+    background: white;
+
+    color: black;
+}
+
+.gallery-counter {
+    position: fixed;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: #aaa;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        height: 70px;
+
+        padding: 0 25px;
+    }
+
+    .navbar nav {
+        display: none;
+
+        position: absolute;
+
+        top: 70px;
+        left: 0;
+
+        width: 100%;
+
+        padding: 25px;
+
+        flex-direction: column;
+
+        gap: 22px;
+
+        background: rgba(8, 8, 8, 0.97);
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .navbar nav.mobile-active {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        min-height: auto;
+    }
+
+    .hero-content {
+        min-height: 70vh;
+
+        padding: 120px 25px 60px;
+    }
+
+    .hero-image {
+        min-height: 65vh;
+    }
+
+    .hero-image img {
+        min-height: 65vh;
+    }
+
+    .image-overlay {
+        background:
+            linear-gradient(
+                to top,
+                #080808 0%,
+                transparent 40%
+            );
+    }
+
+    .image-caption {
+        bottom: 25px;
+        left: 25px;
+    }
+
+
+    /* SECTIONS */
+
+    .episodes,
+    .gallery-section {
+        padding: 100px 25px;
+    }
+
+    .section-heading {
+        margin-bottom: 45px;
+    }
+
+
+    /* MEMORY */
+
+    .episode-card {
+        min-width: 260px;
+
+        height: 340px;
+    }
+
+
+    /* GALLERY */
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+
+        grid-auto-rows: 220px;
+
+        gap: 8px;
+    }
+
+    .gallery-item.large {
+        grid-row: span 2;
+    }
+
+
+    /* LETTER */
+
+    .letter-section {
+        min-height: 80vh;
+
+        padding: 120px 25px;
+    }
+
+    .letter-section h2 {
+        font-size: 60px;
+    }
+
+    .letter-text {
+        max-width: 90%;
+
+        line-height: 1.9;
+    }
+
+    .heart {
+        font-size: 45px;
+
+        margin: 40px 0 25px;
+
+        animation: heartbeat 2s ease-in-out infinite;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        padding: 25px;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+
+    /* MEMORY POPUP */
+
+    .memory-modal {
+        padding: 15px;
+    }
+
+    .memory-modal-content {
+        width: 100%;
+
+        max-height: 92vh;
+
+        grid-template-columns: 1fr;
+
+        overflow-y: auto;
+    }
+
+    .memory-modal-image {
+        min-height: 55vh;
+
+        height: 55vh;
+    }
+
+    .memory-modal-image img {
+        min-height: 55vh;
+
+        height: 55vh;
+    }
+
+    .memory-modal-text {
+        padding: 30px 25px 35px;
+    }
+
+    .memory-modal-text h2 {
+        font-size: 48px;
+    }
+
+
+    /* GALLERY LIGHTBOX */
+
+    .gallery-lightbox-image {
+        width: 92vw;
+
+        height: 75vh;
+    }
+
+    .gallery-prev,
+    .gallery-next {
+        width: 42px;
+
+        height: 42px;
+
+        font-size: 30px;
+    }
+
+    .gallery-prev {
+        left: 12px;
+    }
+
+    .gallery-next {
+        right: 12px;
+    }
+
+    .gallery-close {
+        top: 15px;
+
+        right: 15px;
+
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 25px;
+    }
+}
+
+
+/* FIX: Gallery photo gaps */
+
+.gallery-grid {
+    display: block !important;
+    columns: 3;
+    column-gap: 8px;
+}
+
+.gallery-grid .gallery-item {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto !important;
+    margin: 0 0 8px;
+    break-inside: avoid;
+    vertical-align: top;
+}
+
+.gallery-grid .gallery-item img {
+    display: block;
+    width: 100%;
+    height: auto !important;
+    aspect-ratio: auto;
+    object-fit: cover;
+}
+
+/* Mobile gallery */
+@media (max-width: 800px) {
+    .gallery-grid {
+        columns: 2;
+    }
+}
+
+/* OUR SONG - YouTube Player */
+
+.youtube-container {
+    width: 100%;
+    max-width: 560px;
+    margin: 30px auto;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #111;
+}
+
+.youtube-container iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+    border: none;
+}
+
+.spotify-container {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 25px 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.song-caption,
+.song-note {
+    text-align: center;
+}
+
+.spotify-container audio {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+/* Letter section must never stay blurred/hidden (fixes blur on phones) */
+.letter-section,
+.letter-section.cinematic-hidden,
+.letter-section.hidden {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+}
